@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Bruno Dias\",\r\n    \"email\":\"bruno.dias@email.com\",\r\n    \"password\":\"Foxcpc160580.\"\r\n}",
+							"raw": "{\r\n    \"name\":\"Bruno Dias\",\r\n    \"email\":\"bruno.dissdas@email.com\",\r\n    \"password\":\"Foxcpc160580.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -100,7 +100,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/bookStoreTask/public/api/store/",
+							"raw": "http://localhost/bookStoreTask/public/api/store/?name=&address=&active=true",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -111,6 +111,20 @@
 								"api",
 								"store",
 								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": ""
+								},
+								{
+									"key": "address",
+									"value": ""
+								},
+								{
+									"key": "active",
+									"value": "true"
+								}
 							]
 						}
 					},
@@ -163,6 +177,15 @@
 						},
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Store 1\",\r\n    \"address\" : \"st. 1\",\r\n    \"active\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/bookStoreTask/public/api/store",
 							"protocol": "http",
@@ -194,8 +217,17 @@
 						},
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Store 1133\",\r\n    \"address\" : \"st. 1132\",\r\n    \"active\" : false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost/bookStoreTask/public/api/store/1",
+							"raw": "http://localhost/bookStoreTask/public/api/store/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -205,7 +237,7 @@
 								"public",
 								"api",
 								"store",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -264,7 +296,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/bookStoreTask/public/api/book/",
+							"raw": "http://localhost/bookStoreTask/public/api/book/?name=&isbn=&min_value=&max_value=",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -275,6 +307,24 @@
 								"api",
 								"book",
 								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": ""
+								},
+								{
+									"key": "isbn",
+									"value": ""
+								},
+								{
+									"key": "min_value",
+									"value": ""
+								},
+								{
+									"key": "max_value",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -327,6 +377,15 @@
 						},
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Book 12\",\r\n\"isbn\": \"4324234\",\r\n\"value\":22.9}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/bookStoreTask/public/api/book",
 							"protocol": "http",
@@ -358,8 +417,17 @@
 						},
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Book 12\",\r\n\"isbn\": \"111\",\r\n\"value\":22.9}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost/bookStoreTask/public/api/book/1",
+							"raw": "http://localhost/bookStoreTask/public/api/book/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -369,7 +437,7 @@
 								"public",
 								"api",
 								"book",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -391,7 +459,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/bookStoreTask/public/api/book/1",
+							"raw": "http://localhost/bookStoreTask/public/api/book/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -401,7 +469,7 @@
 								"public",
 								"api",
 								"book",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -427,6 +495,15 @@
 						},
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"store_id\":2,\r\n    \"book_id\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/bookStoreTask/public/api/book_store",
 							"protocol": "http",
@@ -458,6 +535,15 @@
 						},
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"store_id\":2,\r\n    \"book_id\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/bookStoreTask/public/api/book_store",
 							"protocol": "http",
