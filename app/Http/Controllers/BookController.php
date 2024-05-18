@@ -37,6 +37,17 @@ class BookController extends Controller
     }
     public function deleteBook($id)
     {
-        return 'deleteBook not implemented yet!';
+        if (!is_numeric($id)) {
+            return response(['error' => "Id should be numeric"], 400);
+        }
+        $book = Book::find($id);
+        if (!$book) {
+            return response(['error' => "Book not found"], 404);
+        }
+
+        $book->delete();
+        return response([
+            "message" => "Successfully deleted book with id: $id!",
+        ]);
     }
 }

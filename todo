@@ -1,12 +1,8 @@
 - create books
 - update books
-- delete books
 
 - create stores
 - update stores
-- delete stores
 
 - include books in stores
 - delete books from stores
-
-- make stores return books it have

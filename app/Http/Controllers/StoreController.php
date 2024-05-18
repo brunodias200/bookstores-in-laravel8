@@ -37,7 +37,18 @@ class StoreController extends Controller
     }
     function deleteStore($id)
     {
-        return 'deleteStore not implemented yet!';
+        if (!is_numeric($id)) {
+            return response(['error' => "Id should be numeric"], 400);
+        }
+        $store = Store::find($id);
+        if (!$store) {
+            return response(['error' => "Store not found"], 404);
+        }
+
+        $store->delete();
+        return response([
+            "message" => "Successfully deleted store with id: $id!",
+        ]);
     }
     function includeBookInStore(Request $request)
     {
