@@ -13,8 +13,6 @@ class StoreController extends Controller
 {
     function getStores(Request $request)
     {
-
-
         $stores = Store::query();
         $stores = $request->name ? $stores->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($request->name) . '%']) : $stores;
         $stores = $request->address ? $stores->whereRaw('LOWER(address) LIKE ?', ['%' . strtolower($request->address) . '%']) : $stores;
@@ -33,7 +31,7 @@ class StoreController extends Controller
     }
     function createStore(StoreRequest $request)
     {
-        return response(Store::create($request->all()), 201);
+        return response(new StoreResourceWithBooks(Store::create($request->all())), 201);
     }
     function updateStore(Request $request, $id)
     {

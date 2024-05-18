@@ -17,7 +17,7 @@ class StoreResourceWithBooks extends JsonResource
             "id" => $this->store->id,
             "name" => $this->store->name,
             "address" => $this->store->address,
-            "active" => $this->store->active,
+            "active" => $this->store->active ? true : false,
             'books' => BookResource::collection($this->store->books)
         ];
     }

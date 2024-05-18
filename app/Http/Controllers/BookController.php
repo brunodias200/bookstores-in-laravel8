@@ -30,7 +30,7 @@ class BookController extends Controller
     }
     public function createBook(BookRequest $request,)
     {
-        return response(Book::create($request->all()), 201);
+        return response(new BookResourceWithStores(Book::create($request->all())), 201);
     }
     public function updateBook(BookRequest $request, $id)
     {
