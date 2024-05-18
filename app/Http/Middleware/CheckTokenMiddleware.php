@@ -13,7 +13,7 @@ class CheckTokenMiddleware
     private $errorCode;
     private $tokenHelper;
 
-    private function __construct()
+    public function __construct()
     {
         $this->errorMessage = "Invalid Token!";
         $this->errorCode = 401;
