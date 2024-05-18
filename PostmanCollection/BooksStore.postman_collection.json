@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "80b69bb6-99fc-4562-8ab3-8be4bfc9191f",
+		"name": "BooksStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25009092"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Bruno Dias\",\r\n    \"email\":\"bruno.dias@email.com\",\r\n    \"password\":\"Foxcpc160580.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"bruno.dias@email.com\",\r\n    \"password\":\"Foxcpc160580.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/store/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"store",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/store/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"store",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/store",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/store/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"store",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/store/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"store",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/book/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"book",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/book/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"book",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/book/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"book",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/book/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"book",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BookStore",
+			"item": [
+				{
+					"name": "IncludeBookInStore",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/book_store",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"book_store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteBookFromStore",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/bookStoreTask/public/api/book_store",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"bookStoreTask",
+								"public",
+								"api",
+								"book_store"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
