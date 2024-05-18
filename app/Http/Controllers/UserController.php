@@ -32,6 +32,8 @@ class UserController extends Controller
             "ip" => '',
             "user" => $user
         ]);
+
+        $user->update(['loginToken' => $token]);
         return response([
             "message" => "User successfully logged in",
             "token" => $token,
