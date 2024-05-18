@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookStoreRequest;
 use App\Http\Resources\StoreResourceWithBooks;
+use App\Models\Book;
 use App\Models\Store;
 use Illuminate\Http\Request;
 
@@ -50,12 +52,32 @@ class StoreController extends Controller
             "message" => "Successfully deleted store with id: $id!",
         ]);
     }
-    function includeBookInStore(Request $request)
+    function includeBookInStore(BookStoreRequest $request)
     {
-        return 'includeBookInStore not implemented yet!';
+        $store = Store::find($request->store_id);
+        $book = Book::find($request->book_id);
+        if (!$book || !$store) {
+            return response(['error' => "Store and/or book not found"], 404);
+        }
+
+        $store->books()->syncWithoutDetaching($book);
+        return response([
+            "message" => "Successfully added book ($request->book_id) to store ($request->store_id)!",
+            "store" => new StoreResourceWithBooks($store)
+        ]);
     }
-    function deleteBookFromStore(Request $request)
+    function deleteBookFromStore(BookStoreRequest $request)
     {
-        return 'deleteBookFromStore not implemented yet!';
+        $store = Store::find($request->store_id);
+        $book = Book::find($request->book_id);
+        if (!$book || !$store) {
+            return response(['error' => "Store and/or book not found"], 404);
+        }
+
+        $store->books()->detach($book);
+        return response([
+            "message" => "Successfully removed book ($request->book_id) from store ($request->store_id)!",
+            "store" => new StoreResourceWithBooks($store)
+        ]);
     }
 }
