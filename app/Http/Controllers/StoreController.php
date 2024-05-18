@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookStoreRequest;
+use App\Http\Requests\StoreRequest;
 use App\Http\Resources\StoreResourceWithBooks;
 use App\Models\Book;
 use App\Models\Store;
@@ -29,13 +30,22 @@ class StoreController extends Controller
 
         return response(new StoreResourceWithBooks($store));
     }
-    function createStore(Request $request)
+    function createStore(StoreRequest $request)
     {
-        return 'createStore not implemented yet!';
+        return response(Store::create($request->all()), 201);
     }
     function updateStore(Request $request, $id)
     {
-        return 'updateStore not implemented yet!';
+        if (!is_numeric($id)) {
+            return response(['error' => "Id should be numeric"], 400);
+        }
+        $store = Store::find($id);
+        if (!$store) {
+            return response(['error' => "Store not found"], 404);
+        }
+        $store->update($request->all());
+
+        return response(new StoreResourceWithBooks($store), 200);
     }
     function deleteStore($id)
     {

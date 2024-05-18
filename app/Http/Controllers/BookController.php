@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
 use App\Http\Resources\BookResourceWithStores;
 use App\Models\Book;
-use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -27,13 +27,22 @@ class BookController extends Controller
 
         return response(new BookResourceWithStores($book));
     }
-    public function createBook(Request $request,)
+    public function createBook(BookRequest $request,)
     {
-        return 'createBook not implemented yet!';
+        return response(Book::create($request->all()), 201);
     }
-    public function updateBook(Request $request, $id)
+    public function updateBook(BookRequest $request, $id)
     {
-        return 'updateBook not implemented yet!';
+        if (!is_numeric($id)) {
+            return response(['error' => "Id should be numeric"], 400);
+        }
+        $book = Book::find($id);
+        if (!$book) {
+            return response(['error' => "Book not found"], 404);
+        }
+        $book->update($request->all());
+
+        return response(new BookResourceWithStores($book), 200);
     }
     public function deleteBook($id)
     {
