@@ -11,15 +11,16 @@ use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
-    function getStores()
+    function getStores(Request $request)
     {
-        $res = [];
-        $stores = Store::all();
 
-        foreach ($stores as $store) {
-            $res[] = new StoreResourceWithBooks($store);
-        }
-        return response($res);
+
+        $stores = Store::query();
+        $stores = $request->name ? $stores->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($request->name) . '%']) : $stores;
+        $stores = $request->address ? $stores->whereRaw('LOWER(address) LIKE ?', ['%' . strtolower($request->address) . '%']) : $stores;
+        $stores = $request->active ? $stores->where('active', strtoupper($request->active) == "TRUE" ? 1 : 0) : $stores;
+
+        return response(StoreResourceWithBooks::collection($stores->get()));
     }
     function getStoreById($id)
     {

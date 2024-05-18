@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookRequest;
 use App\Http\Resources\BookResourceWithStores;
 use App\Models\Book;
+use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function getBooks()
+    public function getBooks(Request $request)
     {
-        $res = [];
-        $books = Book::all();
+        $books = Book::query();
+        $books = $request->name ? $books->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($request->name) . '%']) : $books;
+        $books = $request->isbn ? $books->where('isbn', $request->isbn) : $books;
+        $books = $request->max_value ? $books->where('value', "<=", $request->max_value) : $books;
+        $books = $request->min_value ? $books->where('value', ">=", $request->min_value) : $books;
 
-        foreach ($books as $book) {
-            $res[] = new BookResourceWithStores($book);
-        }
-        return response($res);
+        return response(BookResourceWithStores::collection($books->get()));
     }
     public function getBookById($id)
     {
