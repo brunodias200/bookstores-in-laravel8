@@ -15,4 +15,8 @@ class Book extends Model
         'isbn',
         'value',
     ];
+    public function stores()
+    {
+        return $this->belongsToMany(Store::class, 'books_stores',  'book_id', 'store_id');
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BookResource;
+use App\Http\Resources\BookResourceWithStores;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,7 @@ class BookController extends Controller
         $books = Book::all();
 
         foreach ($books as $book) {
-            $res[] = new BookResource($book);
+            $res[] = new BookResourceWithStores($book);
         }
         return response($res);
     }
@@ -25,7 +25,7 @@ class BookController extends Controller
         }
         $book = Book::find($id);
 
-        return response(new BookResource($book));
+        return response(new BookResourceWithStores($book));
     }
     public function createBook(Request $request,)
     {

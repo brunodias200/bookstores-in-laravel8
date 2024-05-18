@@ -15,4 +15,8 @@ class Store extends Model
         'address',
         'active',
     ];
+    public function books()
+    {
+        return $this->belongsToMany(Book::class, 'books_stores', 'store_id', 'book_id');
+    }
 }

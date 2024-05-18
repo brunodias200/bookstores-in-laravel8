@@ -14,9 +14,9 @@ class CreateBooksStoresTable extends Migration
     public function up()
     {
         Schema::create('books_stores', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('book_id')->constrained('books')->onDelete('cascade');
             $table->foreignId('store_id')->constrained('stores')->onDelete('cascade');
+            $table->unique(['book_id', 'store_id']);
             $table->timestamps();
         });
     }

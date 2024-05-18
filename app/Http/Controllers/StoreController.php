@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\StoreResource;
+use App\Http\Resources\StoreResourceWithBooks;
 use App\Models\Store;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,7 @@ class StoreController extends Controller
         $stores = Store::all();
 
         foreach ($stores as $store) {
-            $res[] = new StoreResource($store);
+            $res[] = new StoreResourceWithBooks($store);
         }
         return response($res);
     }
@@ -25,7 +25,7 @@ class StoreController extends Controller
         }
         $store = Store::find($id);
 
-        return response(new StoreResource($store));
+        return response(new StoreResourceWithBooks($store));
     }
     function createStore(Request $request)
     {
